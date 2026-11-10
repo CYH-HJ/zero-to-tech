@@ -1,17 +1,70 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#edff47"><meta name="description" content="OFFSCRIPT 不按剧本：一本关于个人风格、街头与独立文化的虚构时尚杂志。"><title>OFFSCRIPT® — 不按剧本</title><link rel="stylesheet" href="style.css"><script src="script.js" defer></script></head>
-<body>
-<a class="skip" href="#latest">跳到文章</a>
-<div class="announcement"><span>独立风格，没有标准答案。</span><span>INDEPENDENT MINDS. UNFILTERED STYLE. ↗</span></div>
-<header class="masthead"><div class="issue-line"><span>SHANGHAI / EVERYWHERE</span><span>独立时尚与文化杂志 · 概念刊</span><span>VOL. 026 — NOV 2026</span></div><a class="wordmark" href="index.html" aria-label="OFFSCRIPT 首页">OFFSCRIPT<span>®</span></a><div class="nav"><a class="mini-brand" href="#cover">不按剧本<span>↙</span></a><nav aria-label="主导航"><a href="#latest">最新内容</a><a href="#editors-note">编辑手记</a><a href="#club">读者俱乐部</a></nav><div class="nav-actions"><button id="saved-toggle" aria-pressed="false">收藏夹 <span id="saved-count">0</span></button><button id="search-toggle" aria-expanded="false" aria-controls="search-panel" aria-label="展开搜索">搜索 ↗</button></div></div><form id="search-panel" class="search-panel" hidden role="search"><label for="search-input">找一点新灵感。</label><input id="search-input" type="search" placeholder="搜索标题、栏目、关键词…"><button type="button" id="search-close" aria-label="关闭搜索">✕</button></form></header>
-<main>
-<section class="cover" id="cover" aria-labelledby="cover-title"><div class="cover-photo"><img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1500&q=85" alt="米兰街头时装人物，身穿浅蓝色外套并搭配粉色腰包" fetchpriority="high"><span class="photo-label">THE NEW INDIVIDUAL / ISSUE 026</span><span class="sticker">穿什么，<br>你说了算！<b>✳</b></span><div class="photo-caption"><span>STYLE IS A PERSONAL THING.</span><span>01 / 06</span></div></div><div class="cover-story"><div class="story-top"><span>本期封面 / THE COVER STORY</span><span class="tag">风格宣言</span></div><p class="hero-en">GOOD TASTE.<br><i>BAD RULES.</i></p><h1 id="cover-title">好品味，<br>不必守规矩。</h1><p class="cover-description">把“应该这样穿”留在门外。我们聊聊那些打破搭配公式的人，以及穿回自己身上的自由。</p><div class="story-bottom"><button class="block-button" data-read="0">阅读封面故事 <span>↗</span></button><span class="read-time">BY 林一<br>6 MIN READ</span></div><div class="cover-index"><span>FASHION / PEOPLE / CULTURE</span><span>NO RULES. JUST YOU.</span></div></div></section>
-<div class="ticker" aria-hidden="true"><div>MORE PERSONALITY. LESS PERMISSION. <span>✳</span> 穿出你的不合时宜 <span>✳</span> MORE PERSONALITY. LESS PERMISSION. <span>✳</span> 穿出你的不合时宜 <span>✳</span> </div></div>
-<section class="latest" id="latest"><div class="section-heading"><div><span class="eyebrow">FRESH OFF THE PRESS / 刚刚出炉</span><h2>值得翻一翻<span>↘</span></h2></div><span class="section-number">THE EDIT<br>026 / 06 STORIES</span></div><div class="filter-row"><div class="filters" role="group" aria-label="按栏目筛选"><button class="active" data-filter="全部" aria-pressed="true">全部 ALL</button><button data-filter="时装" aria-pressed="false">时装 FASHION</button><button data-filter="人物" aria-pressed="false">人物 PEOPLE</button><button data-filter="文化" aria-pressed="false">文化 CULTURE</button></div><span id="results" role="status">06 篇内容</span></div><div class="article-grid" id="articles"></div><div id="empty" class="empty" hidden><h3>这里暂时没有这一页。</h3><p>试试其他关键词，或收藏几篇你喜欢的文章。</p><button id="clear-filters" class="block-button">查看全部内容 ↗</button></div></section>
-<section class="editors-note" id="editors-note"><div class="note-side"><span class="eyebrow">A NOTE FROM THE EDITOR</span><span class="asterisk" aria-hidden="true">✳</span><span>不合时宜，也是一种刚刚好。</span></div><div class="note-body"><span class="tag">编辑手记 / 026</span><h2>别做趋势的复印件。<br>做自己的<b>原版。</b></h2><p>我们不打算教你如何成为“穿对的人”。这本杂志更关心的，是那件你反复穿的旧外套、临出门前突然换上的一双袜子，以及你决定不再解释自己的那个瞬间。</p><p>风格不是购物清单。它是你和世界对话的口音。</p><div class="signature"><span>给每一个不想被定义的你。</span><b>OFFSCRIPT 编辑部 ↗</b></div></div></section>
-<section class="club" id="club"><div><span class="eyebrow">THE READER'S CORNER</span><h2>今天，你站哪一边？</h2><p>穿衣没有正确答案。投出你的直觉，留下自己的态度。</p><small>本机互动投票 · 仅保存在此浏览器，不代表全站统计</small></div><div class="poll"><span class="tag">本期议题 / 01</span><h3>一件衣服，你更在意——</h3><div class="vote-buttons"><button data-vote="feeling" aria-pressed="false">穿上的感觉 <span>↗</span></button><button data-vote="story" aria-pressed="false">背后的故事 <span>↗</span></button></div><p id="vote-status" role="status">直觉选一个。随时可以改变主意。</p></div></section>
-</main>
-<footer><a class="footer-logo" href="#">OFFSCRIPT®</a><div><p>一本不替你做决定的时尚杂志。</p><span>© 2026 OFFSCRIPT · 虚构概念刊 / 原创示例文章</span></div><a class="back-top" href="#">回到封面 ↑</a><div class="footer-bottom"><span>INDEPENDENT. OPINIONATED. ALWAYS YOURSELF.</span><span>摄影：Unsplash · 图片需联网加载</span></div></footer>
-<dialog id="reader" aria-labelledby="reader-title"><div class="reader-toolbar"><span>OFFSCRIPT / 阅读室</span><button id="reader-close" aria-label="关闭文章">关闭 ✕</button></div><div class="reader-content"><span id="reader-category" class="tag"></span><h2 id="reader-title"></h2><p id="reader-meta" class="reader-meta"></p><img id="reader-image" alt=""><div id="reader-body"></div><button id="reader-save" class="block-button" aria-pressed="false">收藏文章 ＋</button></div></dialog><div id="toast" class="toast" role="status" aria-live="polite"></div>
-</body></html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zero to Tech · 个人主页</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/hero.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/cards.css" />
+    <link rel="stylesheet" href="css/lab.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div class="page-shell">
+        <main class="page-content">
+          <section class="dashboard-grid">
+
+            <!-- ↓↓↓ 顶部 hero：品牌 + 导航 + 大标题 + 副标题 ↓↓↓ -->
+            <!-- 这一整块在 text-lab.html 里几乎一字不差地又抄了一遍 -->
+            <article class="hero-stage panel-full">
+              <div class="hero-topline">
+                <p class="brand-eyebrow">zero to tech</p>
+                <nav class="inline-links hero-nav">
+                  <a class="nav-link" href="index.html">个人主页</a>
+                  <a class="nav-link" href="text-lab.html">文字实验室</a>
+                </nav>
+              </div>
+              <div class="hero-copy">
+                <h1 class="hero-display">关于我</h1>
+                <p class="hero-subtitle">项目，创意，灵感，心得，我的作品</p>
+              </div>
+            </article>
+            <!-- ↑↑↑ hero 结束 ↑↑↑ -->
+
+            <article class="panel panel-full featured-work-panel card">
+              <p class="section-kicker">作品</p>
+              <p class="featured-title">文字实验室</p>
+              <p class="featured-copy">拼音和情绪，挖掘中文里的细节</p>
+              <a class="featured-link" href="text-lab.html">
+                <span class="featured-link-label">打开作品</span>
+                <span class="arrow">›</span>
+              </a>
+            </article>
+
+            <article class="panel panel-full identity-panel card">
+              <div class="identity-item">
+                <p class="section-kicker">座右铭</p>
+                <p class="identity-value identity-quote">已识乾坤大，尤怜草木青</p>
+              </div>
+              <div class="identity-item">
+                <p class="section-kicker">正在学习</p>
+                <p class="identity-value">零到全栈</p>
+              </div>
+            </article>
+
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/animejs@4.1.4/lib/anime.iife.min.js"></script>
+    <script src="js/cards.js"></script>
+    <script src="js/score.js"></script>
+    <script src="js/nav.js"></script>
+  </body>
+</html>
