@@ -5,6 +5,7 @@ import Nav from "./Nav.jsx";
 import PageHeading from "./PageHeading.jsx";
 import AnimatedCardGrid from "./AnimatedCardGrid.jsx";
 import InputCard from "./InputCard.jsx";
+import AnalysisHistory from "./AnalysisHistory.jsx";
 import ResultCard from "./ResultCard.jsx";
 import { textLab } from "../data/site.js";
 
@@ -47,6 +48,7 @@ export default function TextLabView() {
 
       <InputCard onAnalyze={analyze} pending={pending} />
       <ResultCard result={result} pending={pending} error={error} />
+      <AnalysisHistory apiUrl={apiUrl} result={result} />
     </AnimatedCardGrid>
   );
 }

@@ -113,3 +113,9 @@
   font-weight: 600;
   color: var(--text-main);
 }
+
+.history-content { margin-top: 20px; }
+.history-list { display: grid; gap: 14px; list-style: none; padding: 0; }
+.history-list time, .history-list dt { color: var(--text-muted); font-size: 13px; }
+.history-list dl { display: grid; gap: 8px; margin-top: 14px; }
+.history-list dd { margin: 0 0 8px; white-space: pre-wrap; overflow-wrap: anywhere; }
