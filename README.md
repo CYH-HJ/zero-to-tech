@@ -1,54 +1,67 @@
-# zero-to-tech-4-4 · 数据驱动界面（模块 4.4 配套代码）
+# zero-to-tech
 
-4.4 的终点成品。相比 4.3，做了三处改动：数据抽进 `src/data/site.js`、输入框接上 state、路由改用 URL。
+项目采用前后端分离架构。Next.js 提供首页和文字实验室页面，FastAPI 提供中文文本分析接口。
 
-## 跑起来
+## 技术架构
 
-```bash
-npm install
-npm run dev          # http://localhost:5173
+| 层 | 技术 | 职责 |
+| --- | --- | --- |
+| 前端 | Next.js 15、React 19、CSS、Anime.js | 使用 App Router 管理页面，提交文本并展示分析结果 |
+| 后端 | Python、FastAPI、Pydantic、Uvicorn | 接收并校验 JSON 请求，调用 Python 库分析文本并返回结果 |
+| 拼音 | pypinyin | 生成带声调的拼音，保留标点、英文和数字 |
+| 情感分析 | SnowNLP | 计算 0–1 的情感分数，后端按阈值给出判断 |
+
+浏览器从文字实验室页面直接向 FastAPI 发送 `POST /api/analyze`，请求体为 `{"text":"今天天气真好"}`。接口返回原文 `text`、拼音 `pinyin`、情感分数 `score` 和判断 `sentiment`。分数 ≤ 0.4 为「偏消极」，≥ 0.6 为「偏积极」，其余为「中性」。
+
+前端入口位于 `app/`，页面组件位于 `components/`。后端入口为 `backend/main.py`，Python 依赖清单为 `backend/requirements.txt`。
+
+## Windows 本地启动
+
+在项目根目录打开两个 PowerShell 终端。当前项目路径为 `D:\My Project\zero-to-tech`。
+
+### 1. 启动 FastAPI 后端
+
+首次配置时执行下面三行。如果项目根目录已经有可用的 `.venv`，直接执行下一段的启动命令。
+
+```powershell
+Set-Location 'D:\My Project\zero-to-tech'
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r backend/requirements.txt
 ```
 
-## 在你的 4.3 项目（`zero-to-tech`）上改成这样
+在第一个终端启动后端并保持窗口打开。如果 [Swagger UI](http://127.0.0.1:8000/docs) 已能打开，可直接使用正在运行的后端。
 
-> 全程在你自己的 `zero-to-tech` 项目里操作，从本 demo 对应路径把文件拷过去。不碰 `.git`，本节不装新依赖。
-
-**新增「内容表」`site.js`**
-
-1. 在项目的 `src/` 下，新建一个目录，命名为 `data`。
-2. 把本 demo 的 `src/data/site.js`，复制进你刚建的 `src/data/` 目录里。
-
-**新增「小路由」`useRoute.js`**
-
-3. 在项目的 `src/` 下，再新建一个目录，命名为 `router`。
-4. 把本 demo 的 `src/router/useRoute.js`，复制进你刚建的 `src/router/` 目录里。
-
-**用本 demo 的版本，覆盖下面这 5 个已有文件**（目录都已存在，直接替换即可）
-
-5. 覆盖 `src/App.jsx`
-6. 覆盖 `src/components/HomePage.jsx`
-7. 覆盖 `src/components/TextLabPage.jsx`
-8. 覆盖 `src/components/InputCard.jsx`
-9. 覆盖 `src/css/lab.css`
-
-**跑起来验证**
-
-10. 执行 `npm run dev`，逐项确认：
-    - 点导航 → 地址栏在 `/` ↔ `/text-lab` 之间变；在 `/text-lab` 刷新，仍停在该页
-    - 输入框打字 → 下面「已输入 N 字」跟着跳
-    - 改 `src/data/site.js` 里的 `heroTitle` 存盘 → 页面大标题当场变
-
-三项都对上，就和本 demo 一致了。
-
-## 改了哪些文件
-
+```powershell
+Set-Location 'D:\My Project\zero-to-tech'
+.\.venv\Scripts\python.exe -m uvicorn backend.main:app --host 127.0.0.1 --port 8000 --reload
 ```
-src/App.jsx                       ★改   改用 useRoute，看地址栏决定显示哪页
-src/data/site.js                  ★新   内容表：网站文案集中在这
-src/router/useRoute.js            ★新   小路由：读 / 写地址栏
-src/components/HomePage.jsx       ★改   文案改从 site.js 读
-src/components/TextLabPage.jsx    ★改   标题改从 site.js 读
-src/components/InputCard.jsx      ★改   输入框接上 state，显示字数
-src/css/lab.css                   ★改   补一段 .lab-count 样式
-其余组件、css                      —    全照 4.3 不动
+
+### 2. 启动 Next.js 前端
+
+日常使用时，在第二个终端直接执行以下命令并保持窗口打开。
+
+```powershell
+Set-Location 'D:\My Project\zero-to-tech'
+npm run dev -- --hostname 127.0.0.1 --port 3000
 ```
+
+首次配置或锁文件更新后，需要先安装依赖。在项目的前端终端按 Ctrl+C 停止正在运行的 Next.js，再在根目录执行以下命令，成功后运行上面的启动命令。
+
+```powershell
+Set-Location 'D:\My Project\zero-to-tech'
+npm ci
+```
+
+Windows 下，运行中的 Next.js 会占用 SWC 编译文件。此时执行 `npm ci` 可能出现 `EPERM unlink`，安装中断后也可能出现找不到 `next` 的错误。停止项目的 Next.js 进程后，重新执行 `npm ci`，等待安装成功再启动。
+
+### 3. 验证结果
+
+打开 [文字实验室](http://127.0.0.1:3000/text-lab/)，输入 `今天真开心！ABC 123`，点击「开始分析」。
+
+本地实测使用 Node.js 24 和 Python 3.13。按上述启动命令重新启动两端后，文字实验室页面、Swagger UI 和分析接口均返回 HTTP 200。测试文本返回拼音 `jīn tiān zhēn kāi xīn ！ABC 123`，情感分数约为 `0.70`，判断为「偏积极」。
+
+### 本地地址配置
+
+前端默认请求 `http://127.0.0.1:8000`。如果后端地址或端口有变化，在项目根目录的 `.env.local` 设置 `NEXT_PUBLIC_API_URL` 并重启 Next.js。例如，后端改用 8001 端口时，设置 `NEXT_PUBLIC_API_URL=http://127.0.0.1:8001`。
+
+后端默认允许来自 `http://localhost:3000` 和 `http://127.0.0.1:3000` 的跨域请求。如果更改前端地址或端口，同步更新 `backend/main.py` 的 `allow_origins`。
